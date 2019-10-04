@@ -1,7 +1,6 @@
-<template color="black">
+<template>
 
-  <v-container >
-     <v-parallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"></v-parallax>
+  <v-container>
     <v-layout text-center>
       <v-form v-model="valid">
         <v-container>
@@ -9,7 +8,10 @@
             <v-col cols="6" md="12">
               <v-text-field v-model="name" label="Name is here please" required></v-text-field>
             <v-btn rounded color="orange" dark>Rounded Button</v-btn>
-            
+            <v-btn rounded color="orange" dark>Rounded Button</v-btn>
+                       <v-btn class="mx-2" fab dark color="teal">
+        <v-icon dark>mdi-check</v-icon>
+      </v-btn>
             </v-col>
 
             <v-col cols="12" md="12">
