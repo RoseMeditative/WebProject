@@ -59,8 +59,6 @@ export default {
     Register: false,
     username: '',
     password: '',
-    //newPassword:'',
-    //newLog:'',
     todos: [],
     url: 'http://localhost:4000'
   }),
@@ -68,36 +66,55 @@ export default {
  
  
  methods: {
+
+     //LOG USER
     async login () {
-      // connecter l'utilisateur
+     
       const response = await this.axios.post(this.url + '/api/login', {login: this.username,password: this.password})
       //console.log('response is:', response)
       console.log('CONNECTION !')
       this.message = response.data.message
-
+ 
       if (this.message === 'connected') {
       this.notConnect=false
-      
-    console.log('CONNECTE !')
+     // alert('CONNECTED !')
       }
     },
     
+
+    //PRINT FORM TO REGISTER
     async onClickNotRegister () {
     this.notRegister=true
     this.Register=false
     },
 
+
+    //PRINT FORM TO CONNECT
     async onClickRegister () {
     this.notRegister=false
     this.Register=true
     },
 
+
+    //ADD NEW USER
     async newUser () {
-    const response = await this.axios.post(this.url + '/api/newUser', {login: this.username,password: this.newPassword})
+    const response = await this.axios.post(this.url + '/api/newUser', {login: this.username,password: this.password})
     this.message = response.data.message
+    alert('SUCCESSFULY ADDED !')
+
     },
 
-    logout () {
+
+    //LOG OUT USER
+    async logout () {
+    const response = await this.axios.post(this.url + '/api/logout', {
+      })
+      this.message = response.data.message
+      if (response.data.message === 'disconnected') {
+    
+    
+    //IMPLIQUE BLABLABLA
+      }
     },
     
   }

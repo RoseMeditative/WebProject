@@ -36,18 +36,7 @@ const users = [{
   password: 'admin'
 }]
 
-app.get('/api/test', (req, res) => {
-  console.log('ce console.log est appelé au bon moment')
-  res.json([
-    {
-      title: 'truc',
-      content: 'machin'
-    }, {
-      title: 'truc2',
-      content: 'machin2'
-    }
-  ])
-})
+// USER LOGIN INTO SERVER & RESPONSE
 
 app.post('/api/login', (req, res) => {
   console.log('req.body', req.body)
@@ -55,13 +44,14 @@ app.post('/api/login', (req, res) => {
   if (!req.session.userId) {
     const user = users.find(u => u.username === req.body.login && u.password === req.body.password)
     if (!user) {
-      // gérez le cas où on n'a pas trouvé d'utilisateur correspondant
+      // USER NOT FOUND
       res.status(401)
       res.json({
-        message: 'error'
+        message: 'error users not found'
       })
+      // alert('CONNECTION ERROR')
     } else {
-      // connect the user
+      // USER FOUND => CONNECT USER
       req.session.userId = 1000 // connect the user, and change the id
       res.json({
         message: 'connected'
@@ -70,9 +60,35 @@ app.post('/api/login', (req, res) => {
   } else {
     res.status(401)
     res.json({
-      message: 'you are already connected'
+      message: 'already connected'
+    })
+    // alert('ALREADY CONNECTED')
+  }
+})
+
+// ADD NEW USER INTO SERVER
+app.post('/api/newUser', (req, res) => {
+  const user = users.find(u => u.username === req.body.login && u.password === req.body.password)
+  if (!user) {
+    users.push({
+      username: req.body.login,
+      password: req.body.password
+    })
+    res.json({
+      message: 'user created succesfull'
+    })
+  } else {
+    res.json({
+      message: 'user already exist'
     })
   }
+})
+
+app.post('/api/logout', (req, res) => {
+  req.session.user = 0
+  res.json({
+    message: 'disconnected'
+  })
 })
 
 app.get('/api/admin', (req, res) => {
