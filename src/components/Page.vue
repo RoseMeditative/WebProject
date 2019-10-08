@@ -5,6 +5,18 @@
 
             <v-form v-model="valid">
 
+
+                <v-container v-if="notConnect===false">
+                    <v-row
+                    align="center"
+                    justify="center">
+                    <h1>Let's play (Afficher nom)</h1>
+                    <v-btn v-on:click="logout" class="ma-12" tile color="red">
+                    Quit
+                    </v-btn>
+                    </v-row>
+                </v-container>
+
                 <v-container v-if="notConnect">
 
                     <br><br>
@@ -12,6 +24,7 @@
                     <div class="center-text">
 
                     <v-btn v-on:click="onClickNotRegister" rounded color="orange" dark>Not Registered</v-btn>
+                    
                     <v-btn v-on:click="onClickRegister" rounded color="blue" dark>Already Registered</v-btn>
 
                     </div>
@@ -22,11 +35,18 @@
                         <h1>Create your Account</h1>    
                         <v-text-field v-model="username" label="Create Username" required></v-text-field>
                         <v-text-field v-model="password" label="Create Password" type="password" required></v-text-field>
-    
-                        <v-btn v-on:click="newUser" class="mx-12" fab dark color="green">
-                         <v-icon dark>mdi-check</v-icon>
+     <v-row
+        align="center"
+        justify="center"
+      >
+                        <v-btn v-on:click="newUser" 
+                        class="mx-12" 
+                        fab dark color="green">
+                       <v-icon dark>mdi-check</v-icon>
+
                         </v-btn>
-    
+
+     </v-row>
                     </v-container>
     
     
@@ -34,10 +54,14 @@
                         <h1>Connection</h1>
                         <v-text-field v-model="username" label="Username" required></v-text-field>
                         <v-text-field v-model="password" label="Password" type="password" required></v-text-field>
-
+ <v-row
+        align="center"
+        justify="center"
+      >
                         <v-btn v-on:click="login" class="mx-12" fab dark color="green">
                          <v-icon dark>mdi-check</v-icon>
                         </v-btn>
+ </v-row>
                     </v-container>
                 </v-container>
 
@@ -66,18 +90,18 @@ export default {
  
  
  methods: {
-
      //LOG USER
     async login () {
      
-      const response = await this.axios.post(this.url + '/api/login', {login: this.username,password: this.password})
+      const response = await this.axios.post(this.url 
+      + '/api/login', {login: this.username,password: this.password})
       //console.log('response is:', response)
       console.log('CONNECTION !')
       this.message = response.data.message
  
       if (this.message === 'connected') {
       this.notConnect=false
-     // alert('CONNECTED !')
+     alert('CONNECTED !')
       }
     },
     
@@ -111,12 +135,15 @@ export default {
       })
       this.message = response.data.message
       if (response.data.message === 'disconnected') {
-    
+    alert('Currently Disconected')
+    this.notConnect=true
     
     //IMPLIQUE BLABLABLA
       }
     },
+
     
   }
 }
 </script>
+
