@@ -10,7 +10,6 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
 const session = require('express-session')
-
 const app = express()
 
 // ces lignes (cors) sont importantes pour les sessions dans la version de développement
@@ -89,6 +88,72 @@ app.post('/api/logout', (req, res) => {
   res.json({
     message: 'disconnected'
   })
+})
+
+var A11 = 0
+var A12 = 0
+var A21 = 0
+var A22 = 0
+var A31 = 0
+var A32 = 0
+var A41 = 0
+var A42 = 0
+var A51 = 0
+var A52 = 0
+
+app.post('/api/addStats', (req, res) => {
+  // const user = users.find(u => u.username === req.body.login && u.password === req.body.password)
+  if (req.body.ans === 11) {
+    A11 = A11 + 1
+    res.json({ message1: A11, message2: A12 }
+    )
+  }
+  if (req.body.ans === 12) {
+    A12 = A12 + 1
+    res.json({ message1: A11, message2: A12 }
+    )
+  }
+
+  if (req.body.ans === 21) {
+    A21 = A21 + 1
+    res.json({ message1: A21, message2: A22 }
+    )
+  }
+  if (req.body.ans === 22) {
+    A22 = A22 + 1
+    res.json({ message1: A21, message2: A22 }
+    )
+  }
+  if (req.body.ans === 31) {
+    A31 = A31 + 1
+    res.json({ message1: A31, message2: A32 }
+    )
+  }
+  if (req.body.ans === 32) {
+    A32 = A32 + 1
+    res.json({ message1: A31, message2: A32 }
+    )
+  }
+  if (req.body.ans === 41) {
+    A41 = A41 + 1
+    res.json({ message1: A41, message2: A42 }
+    )
+  }
+  if (req.body.ans === 42) {
+    A42 = A42 + 1
+    res.json({ message1: A41, message2: A42 }
+    )
+  }
+  if (req.body.ans === 51) {
+    A51 = A51 + 1
+    res.json({ message1: A51, message2: A52 }
+    )
+  }
+  if (req.body.ans === 52) {
+    A52 = A52 + 1
+    res.json({ message1: A51, message2: A52 }
+    )
+  }
 })
 
 app.get('/api/admin', (req, res) => {

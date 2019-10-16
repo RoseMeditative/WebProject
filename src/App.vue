@@ -80,6 +80,7 @@ export default {
     Register: false,
     username: "",
     password: "",
+    answer: 0,
     todos: [],
     url: "http://localhost:4000"
   }),
