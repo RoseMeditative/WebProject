@@ -94,10 +94,9 @@ export default {
         password: this.password
       });
       //console.log('response is:', response)
-      console.log("CONNECTION !");
-      this.message = response.data.message;
+      alert(response.data.message);
 
-      if (this.message === "connected") {
+      if (response.data.message === "connected") {
         this.notConnect = false;
         alert("CONNECTED !");
       }
@@ -121,21 +120,20 @@ export default {
         login: this.username,
         password: this.password
       });
-      this.message = response.data.message;
-      alert("SUCCESSFULY ADDED !");
+      alert(response.data.message);
     },
 
     //LOG OUT USER
     async logout() {
-      const response = await this.axios.post(this.url + "/api/logout", {});
-      this.message = response.data.message;
+      const response = await this.axios.post(this.url + "/api/logout", {        
+      })
+      alert(response.data.message);
       if (response.data.message === "disconnected") {
-        alert("Currently Disconected");
+        alert(response.data.message);
         this.notConnect = true;
-
         //IMPLIQUE BLABLABLA
       }
-    }
+    },
   }
 };
 </script>
