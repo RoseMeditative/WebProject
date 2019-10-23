@@ -195,6 +195,16 @@
           </v-container>
         </v-card>
       </v-timeline-item>
+      <v-card height="50">
+    <v-footer padless
+      class="font-weight-medium">
+      <v-col
+        class="text-center"
+        cols="12">
+        {{ new Date().getFullYear() }} — <strong>W-W-Y-C / Adrien COLETTE - Alexandre BIAU</strong>
+      </v-col>
+    </v-footer>
+      </v-card>
     </v-timeline>
   </v-app>
 </template>
@@ -220,49 +230,49 @@ export default {
     Data1: 0,
     Data2: 0,
     totalData: 0,
-    url: "http://localhost:4000"
+    url: 'http://localhost:4000'
   }),
 
   methods: {
-    async addStats(ans) {
-      const response = await this.axios.post(this.url + "/api/addStats", {
+    async addStats (ans) {
+      const response = await this.axios.post(this.url + '/api/addStats', {
         ans: ans
-      });
+      })
 
-      console.log(response);
+      console.log(response)
 
-      this.Data1 = response.data.message1;
-      this.Data2 = response.data.message2;
-      this.totalData = this.Data1 + this.Data2;
-      this.Data1 = (this.Data1 / this.totalData) * 100;
-      this.Data2 = (this.Data2 / this.totalData) * 100;
+      this.Data1 = response.data.message1
+      this.Data2 = response.data.message2
+      this.totalData = this.Data1 + this.Data2
+      this.Data1 = (this.Data1 / this.totalData) * 100
+      this.Data2 = (this.Data2 / this.totalData) * 100
 
       if (ans === 11 || ans === 12) {
-        this.answ1 = true;
-        this.Data11 = this.Data1;
-        this.Data12 = this.Data2;
+        this.answ1 = true
+        this.Data11 = this.Data1
+        this.Data12 = this.Data2
       }
       if (ans === 21 || ans === 22) {
-        this.answ2 = true;
-        this.Data21 = this.Data1;
-        this.Data22 = this.Data2;
+        this.answ2 = true
+        this.Data21 = this.Data1
+        this.Data22 = this.Data2
       }
       if (ans === 31 || ans === 32) {
-        this.answ3 = true;
-        this.Data31 = this.Data1;
-        this.Data32 = this.Data2;
+        this.answ3 = true
+        this.Data31 = this.Data1
+        this.Data32 = this.Data2
       }
       if (ans === 41 || ans === 42) {
-        this.answ4 = true;
-        this.Data41 = this.Data1;
-        this.Data42 = this.Data2;
+        this.answ4 = true
+        this.Data41 = this.Data1
+        this.Data42 = this.Data2
       }
       if (ans === 51 || ans === 52) {
-        this.answ5 = true;
-        this.Data51 = this.Data1;
-        this.Data52 = this.Data2;
+        this.answ5 = true
+        this.Data51 = this.Data1
+        this.Data52 = this.Data2
       }
     }
   }
-};
+}
 </script>

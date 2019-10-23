@@ -60,16 +60,13 @@
   </v-app>
 </template>
 
-
-
-
 <script>
-//IMPORT FILES.VUE
-import questPage from "./components/questionsPage";
+// IMPORT FILES.VUE
+import questPage from './components/questionsPage'
 
-//DATA & COMPONENTS.VUE
+// DATA & COMPONENTS.VUE
 export default {
-  name: "App",
+  name: 'App',
 
   components: { questPage },
 
@@ -78,62 +75,62 @@ export default {
     notConnect: true,
     notRegister: false,
     Register: false,
-    username: "",
-    password: "",
+    username: '',
+    password: '',
     answer: 0,
     todos: [],
-    url: "http://localhost:4000"
+    url: 'http://localhost:4000'
   }),
 
-  //METHODS
+  // METHODS
   methods: {
-    //LOG USER
-    async login() {
-      const response = await this.axios.post(this.url + "/api/login", {
+    // LOG USER
+    async login () {
+      const response = await this.axios.post(this.url + '/api/login', {
         login: this.username,
         password: this.password
-      });
-      //console.log('response is:', response)
-      alert(response.data.message);
-
-      if (response.data.message === "connected") {
-        this.notConnect = false;
-        alert("CONNECTED !");
-      }
-    },
-
-    //PRINT FORM TO REGISTER
-    async onClickNotRegister() {
-      this.notRegister = true;
-      this.Register = false;
-    },
-
-    //PRINT FORM TO CONNECT
-    async onClickRegister() {
-      this.notRegister = false;
-      this.Register = true;
-    },
-
-    //ADD NEW USER
-    async newUser() {
-      const response = await this.axios.post(this.url + "/api/newUser", {
-        login: this.username,
-        password: this.password
-      });
-      alert(response.data.message);
-    },
-
-    //LOG OUT USER
-    async logout() {
-      const response = await this.axios.post(this.url + "/api/logout", {        
       })
-      alert(response.data.message);
-      if (response.data.message === "disconnected") {
-        alert(response.data.message);
-        this.notConnect = true;
-        //IMPLIQUE BLABLABLA
+      // console.log('response is:', response)
+      alert(response.data.message)
+
+      if (response.data.message === 'connected') {
+        this.notConnect = false
+        alert('CONNECTED !')
       }
     },
+
+    // PRINT FORM TO REGISTER
+    async onClickNotRegister () {
+      this.notRegister = true
+      this.Register = false
+    },
+
+    // PRINT FORM TO CONNECT
+    async onClickRegister () {
+      this.notRegister = false
+      this.Register = true
+    },
+
+    // ADD NEW USER
+    async newUser () {
+      const response = await this.axios.post(this.url + '/api/newUser', {
+        login: this.username,
+        password: this.password
+      })
+      alert(response.data.message)
+    },
+
+    // LOG OUT USER
+    async logout () {
+      const response = await this.axios.post(this.url + '/api/logout',
+        {})
+      alert(response.data.message)
+      if (response.data.message === 'disconnected') {
+        alert(response.data.message)
+        this.notConnect = true
+        // IMPLIQUE BLABLABLA
+      }
+    }
   }
-};
+}
 </script>
