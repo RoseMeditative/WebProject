@@ -4,7 +4,7 @@
 
     <v-parallax src="https://images7.alphacoders.com/958/958598.jpg">
       <v-row align="center" justify="center">
-        <h1>What will you choose ?</h1>
+        <h1><p class="display-4 font-italic font-weight-bold">Tu Préfères ... ?</p></h1>
       </v-row>
     </v-parallax>
 
@@ -15,7 +15,7 @@
         <!-- IF USER IS CONNECTED -->
         <v-row align="center" justify="center">
           <h1>Ok {{username}}, Let's play !</h1>
-          <v-btn v-on:click="logout" class="ma-12" tile color="red">Quit</v-btn>
+            <v-btn v-on:click="logout" class="ma-12" outlined color="red"><v-icon dark left>mdi-arrow-left</v-icon>Login</v-btn>
         </v-row>
         <!-- QUESTIONS -->
         <questPage />
@@ -34,8 +34,9 @@
           <v-container v-if="notRegister">
             <!-- ADD USER FORM -->
             <h1 align="center" justify="center">Create your Account</h1>
-            <v-text-field v-model="username" label="Create Username" required></v-text-field>
-            <v-text-field v-model="password" label="Create Password" type="password" required></v-text-field>
+            <v-text-field v-model="username" label="Create Username" prepend-icon="mdi-account-circle" required></v-text-field>
+            <v-text-field v-model="password" label="Create Password" type="password" prepend-icon="mdi-lock"
+            append-icon="mdi-eye-off" required></v-text-field>
             <v-row align="center" justify="center">
               <v-btn v-on:click="newUser" class="mx-12" fab dark color="green">
                 <v-icon dark>mdi-check</v-icon>
@@ -46,8 +47,9 @@
           <v-container v-if="Register">
             <!-- REGISTER FORM -->
             <h1 align="center" justify="center">Connection</h1>
-            <v-text-field v-model="username" label="Username" required></v-text-field>
-            <v-text-field v-model="password" label="Password" type="password" required></v-text-field>
+            <v-text-field v-model="username" label="Username" prepend-icon="mdi-account-circle" required></v-text-field>
+            <v-text-field v-model="password" label="Password" type="password"  prepend-icon="mdi-lock"
+            append-icon="mdi-eye-off" required></v-text-field>
             <v-row align="center" justify="center">
               <v-btn v-on:click="login" class="mx-12" fab dark color="green">
                 <v-icon dark>mdi-check</v-icon>

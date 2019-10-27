@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <!-- QUESTIONS TIMELINE-->
+   <!-- QUESTIONS TIMELINE-->
     <v-timeline :dense="$vuetify.breakpoint.smAndDown">
       <!-- QUESTION 1-->
       <v-timeline-item color="purple lighten-2" fill-dot right>
@@ -201,7 +201,7 @@
       <v-col
         class="text-center"
         cols="12">
-        {{ new Date().getFullYear() }} — <strong>W-W-Y-C / Adrien COLETTE - Alexandre BIAU</strong>
+        {{ new Date().getFullYear() }} — <strong>Tu préfères ... ? / Adrien COLETTE - Alexandre BIAU</strong>
       </v-col>
     </v-footer>
       </v-card>
