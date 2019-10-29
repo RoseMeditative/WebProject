@@ -81,7 +81,7 @@ export default {
     password: '',
     answer: 0,
     todos: [],
-    url: 'http://localhost:4000'
+    url: ''
   }),
 
   // METHODS

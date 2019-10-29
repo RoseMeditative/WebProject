@@ -230,7 +230,7 @@ export default {
     Data1: 0,
     Data2: 0,
     totalData: 0,
-    url: 'http://localhost:4000'
+    url: ''
   }),
 
   methods: {
